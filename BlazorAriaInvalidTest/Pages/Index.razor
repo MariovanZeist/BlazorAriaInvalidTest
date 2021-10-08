@@ -1,0 +1,24 @@
+﻿@page "/"
+@using System.ComponentModel.DataAnnotations
+
+<PageTitle>Index</PageTitle>
+
+<h1>Hello, world!</h1>
+
+Welcome to your new app.
+
+<SurveyPrompt Title="How is Blazor working for you?" />
+
+<EditForm Model=this>
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <InputText @bind-Value=Text />
+    <button type="submit">Submit</button>
+</EditForm>
+
+@Text
+
+@code {
+    [StringLength(4, ErrorMessage = "Identifier too long (4 character limit).")]
+    public string Text { get; set; }
+}
